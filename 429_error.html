@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAF 商城：代購代儲、禮品卡購買唯一選擇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .language-switch select {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            min-width: 100px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+        }
+
+        .language-switch select:hover {
+            background-color: #2980b9;
+        }
+
+        .language-switch select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+        }
+
+        .error-box {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .error-title {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .error-content {
+            margin-bottom: 2rem;
+        }
+
+        .error-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .error-section h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-section p {
+            margin-bottom: 1rem;
+        }
+
+        .error-section ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+            color: #856404;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .copy-section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .copy-section textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            resize: vertical;
+        }
+
+        .copy-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #2980b9;
+        }
+
+        .copy-button.copied {
+            background: #27ae60;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        [lang="en"] {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .error-box {
+                padding: 1.5rem;
+            }
+
+            .error-title {
+                font-size: 1.2rem;
+            }
+
+            .language-switch {
+                position: static;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .language-switch select {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-switch">
+            <select onchange="toggleLanguage(this.value)">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div class="header">
+            <div class="logo">NAF 商城</div>
+            <h1>請求過於頻繁</h1>
+        </div>
+
+        <div class="error-box">
+            <div class="error-title">429 錯誤：請求過於頻繁</div>
+            
+            <div class="error-content">
+                <div class="error-section">
+                    <h3>發生了什麼事？</h3>
+                    <p>我們檢測到您的請求頻率超過了正常使用範圍。這可能是由於：</p>
+                    <ul>
+                        <li>短時間內發送過多請求</li>
+                        <li>使用自動化工具或腳本</li>
+                        <li>瀏覽器擴充功能造成的異常行為</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>建議解決方案：</h3>
+                    <ul>
+                        <li>請稍等幾分鐘後再試</li>
+                        <li>關閉可能造成問題的瀏覽器擴充功能</li>
+                        <li>清除瀏覽器快取和 Cookie</li>
+                        <li>如果問題持續，請聯繫客服支援</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>需要協助？</h3>
+                    <p>請將以下資訊發送至 <a href="mailto:support@nafstore.net" class="email-link">support@nafstore.net</a>，我們的客服團隊將協助您解決問題：</p>
+                    
+                    <div class="copy-section">
+                        <h3>複製以下資訊：</h3>
+                        <textarea id="info-template" readonly>主旨：429 錯誤回報
+
+IP 位址：::CLIENT_IP::
+辨識碼 (Ray ID)：::RAY_ID::
+
+請描述您遇到的問題：</textarea>
+                        <button class="copy-button" onclick="copyToClipboard()">複製資訊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© <span id="current-year"></span> NAF 商城. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- English Version -->
+    <div class="container" lang="en">
+        <div class="language-switch">
+            <select onchange="toggleLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+
+        <div class="header">
+            <div class="logo">NAF Store</div>
+            <h1>Too Many Requests</h1>
+        </div>
+
+        <div class="error-box">
+            <div class="error-title">429 Error: Too Many Requests</div>
+            
+            <div class="error-content">
+                <div class="error-section">
+                    <h3>What happened?</h3>
+                    <p>We have detected that your request rate exceeds normal usage patterns. This could be due to:</p>
+                    <ul>
+                        <li>Too many requests in a short time period</li>
+                        <li>Use of automated tools or scripts</li>
+                        <li>Browser extensions causing unusual behavior</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>Suggested Solutions:</h3>
+                    <ul>
+                        <li>Please wait a few minutes before trying again</li>
+                        <li>Disable browser extensions that might be causing issues</li>
+                        <li>Clear your browser cache and cookies</li>
+                        <li>Contact customer support if the problem persists</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Need Help?</h3>
+                    <p>Please send the following information to <a href="mailto:support@nafstore.net" class="email-link">support@nafstore.net</a>, and our support team will assist you:</p>
+                    
+                    <div class="copy-section">
+                        <h3>Copy the following information:</h3>
+                        <textarea id="info-template-en" readonly>Subject: 429 Error Report
+
+IP Address: ::CLIENT_IP::
+Ray ID: ::RAY_ID::
+
+Please describe your issue:</textarea>
+                        <button class="copy-button" onclick="copyToClipboard('en')">Copy Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© <span id="current-year-en"></span> NAF Store. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Set current year
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+        document.getElementById('current-year-en').textContent = currentYear;
+
+        function toggleLanguage(lang) {
+            const zhContent = document.querySelector('body > div:not([lang="en"])');
+            const enContent = document.querySelector('[lang="en"]');
+            const zhSelect = document.querySelector('div:not([lang="en"]) select');
+            const enSelect = document.querySelector('[lang="en"] select');
+
+            if (lang === 'zh') {
+                zhContent.style.display = 'block';
+                enContent.style.display = 'none';
+                zhSelect.value = 'zh';
+                enSelect.value = 'zh';
+            } else {
+                zhContent.style.display = 'none';
+                enContent.style.display = 'block';
+                zhSelect.value = 'en';
+                enSelect.value = 'en';
+            }
+        }
+
+        function copyToClipboard(lang = 'zh') {
+            const template = document.getElementById(`info-template${lang === 'en' ? '-en' : ''}`);
+            template.select();
+            document.execCommand('copy');
+            
+            const button = lang === 'en' ? 
+                document.querySelector('[lang="en"] .copy-button') : 
+                document.querySelector('.copy-button');
+            
+            button.textContent = lang === 'en' ? 'Copied!' : '已複製！';
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.textContent = lang === 'en' ? 'Copy Information' : '複製資訊';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAF 商城：代購代儲、禮品卡購買唯一選擇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .language-switch select {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            min-width: 100px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.5em 1.5em;
+        }
+
+        .language-switch select:hover {
+            background-color: #2980b9;
+        }
+
+        .language-switch select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+        }
+
+        .error-box {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .error-title {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .error-content {
+            margin-bottom: 2rem;
+        }
+
+        .error-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .error-section h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-section ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        .troubleshooting {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .troubleshooting h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .troubleshooting ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+            color: #856404;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .info-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .email-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .copy-section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .copy-section textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            resize: vertical;
+        }
+
+        .copy-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .copy-button:hover {
+            background: #2980b9;
+        }
+
+        .copy-button.copied {
+            background: #27ae60;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        [lang="en"] {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .error-box {
+                padding: 1.5rem;
+            }
+
+            .error-title {
+                font-size: 1.2rem;
+            }
+
+            .copy-section {
+                padding: 1rem;
+            }
+
+            .language-switch {
+                position: static;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .language-switch select {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-switch">
+            <select onchange="toggleLanguage(this.value)">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div class="header">
+            <div class="logo">NAF 商城</div>
+            <h1>存取限制通知</h1>
+        </div>
+
+        <div class="error-box">
+            <div class="error-title">很抱歉，您目前無法存取網站</div>
+            
+            <div class="error-content">
+                <div class="error-section">
+                    <h3>可能的原因：</h3>
+                    <ul>
+                        <li>您正在使用 VPN 服務</li>
+                        <li>您所在的國家/地區不在服務範圍內</li>
+                        <li>因當地政策限制，無法在該地區提供服務</li>
+                        <li>您的 IP 位址已被列入高風險管理清單，基於安全考量暫時限制存取</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting">
+                    <h3>建議解決方案：</h3>
+                    <ul>
+                        <li>如果您正在使用 VPN，請先嘗試關閉 VPN 服務</li>
+                        <li>如果以上方法都無法解決，請聯繫客服支援</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>需要協助？</h3>
+                    <p>請將以下資訊發送至 <a href="mailto:support@nafstore.net" class="email-link">support@nafstore.net</a>，我們的客服團隊將協助您解決問題：</p>
+                    
+                    <div class="copy-section">
+                        <h3>複製以下資訊：</h3>
+                        <textarea id="info-template" readonly>主旨：存取限制問題回報
+
+IP 位址：::CLIENT_IP::
+辨識碼 (Ray ID)：::RAY_ID::
+
+請描述您遇到的問題：</textarea>
+                        <button class="copy-button" onclick="copyToClipboard()">複製資訊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 NAF 商城. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- English Version -->
+    <div class="container" lang="en">
+        <div class="language-switch">
+            <select onchange="toggleLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+
+        <div class="header">
+            <div class="logo">NAF Store</div>
+            <h1>Access Restriction Notice</h1>
+        </div>
+
+        <div class="error-box">
+            <div class="error-title">Sorry, You Cannot Access the Website</div>
+            
+            <div class="error-content">
+                <div class="error-section">
+                    <h3>Possible Reasons:</h3>
+                    <ul>
+                        <li>You are using a VPN service</li>
+                        <li>Your country/region is not within our service area</li>
+                        <li>Service is not available in your region due to local policies</li>
+                        <li>Your IP address has been flagged as high-risk and temporarily restricted for security reasons</li>
+                    </ul>
+                </div>
+
+                <div class="troubleshooting">
+                    <h3>Suggested Solutions:</h3>
+                    <ul>
+                        <li>If you are using a VPN, try disabling it first</li>
+                        <li>If the above methods don't work, please contact support</li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Need Help?</h3>
+                    <p>Please send the following information to <a href="mailto:support@nafstore.net" class="email-link">support@nafstore.net</a>, and our support team will assist you:</p>
+                    
+                    <div class="copy-section">
+                        <h3>Copy the following information:</h3>
+                        <textarea id="info-template-en" readonly>Subject: Access Restriction Report
+
+IP Address: ::CLIENT_IP::
+Ray ID: ::RAY_ID::
+
+Please describe your issue:</textarea>
+                        <button class="copy-button" onclick="copyToClipboard('en')">Copy Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 NAF Store. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage(lang) {
+            const zhContent = document.querySelector('body > div:not([lang="en"])');
+            const enContent = document.querySelector('[lang="en"]');
+            const zhSelect = document.querySelector('div:not([lang="en"]) select');
+            const enSelect = document.querySelector('[lang="en"] select');
+
+            if (lang === 'zh') {
+                zhContent.style.display = 'block';
+                enContent.style.display = 'none';
+                zhSelect.value = 'zh';
+                enSelect.value = 'zh';
+            } else {
+                zhContent.style.display = 'none';
+                enContent.style.display = 'block';
+                zhSelect.value = 'en';
+                enSelect.value = 'en';
+            }
+        }
+
+        function copyToClipboard(lang = 'zh') {
+            const template = document.getElementById(`info-template${lang === 'en' ? '-en' : ''}`);
+            template.select();
+            document.execCommand('copy');
+            
+            const button = lang === 'en' ? 
+                document.querySelector('[lang="en"] .copy-button') : 
+                document.querySelector('.copy-button');
+            
+            button.textContent = lang === 'en' ? 'Copied!' : '已複製！';
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.textContent = lang === 'en' ? 'Copy Information' : '複製資訊';
+                button.classList.remove('copied');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
