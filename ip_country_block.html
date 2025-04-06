@@ -288,7 +288,7 @@ IP 位址：::CLIENT_IP::
         </div>
 
         <div class="footer">
-            <p>© 2024 NAF 商城. All rights reserved.</p>
+            <p>© <span id="current-year"></span> NAF 商城. All rights reserved.</p>
         </div>
     </div>
 
@@ -347,11 +347,16 @@ Please describe your issue:</textarea>
         </div>
 
         <div class="footer">
-            <p>© 2024 NAF Store. All rights reserved.</p>
+            <p>© <span id="current-year-en"></span> NAF Store. All rights reserved.</p>
         </div>
     </div>
 
     <script>
+        // Set current year
+        const currentYear = new Date().getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+        document.getElementById('current-year-en').textContent = currentYear;
+
         function toggleLanguage(lang) {
             const zhContent = document.querySelector('body > div:not([lang="en"])');
             const enContent = document.querySelector('[lang="en"]');
