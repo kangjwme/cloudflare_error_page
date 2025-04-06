@@ -214,6 +214,34 @@
             line-height: 1.6;
         }
 
+        /* Hide Cloudflare error box */
+        .cf-error-details {
+            display: none !important;
+        }
+
+        .cf-error-details h1 {
+            color: #856404;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cf-error-details p {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+
+        .cf-error-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cf-error-details li {
+            color: #856404;
+            margin-bottom: 0.5rem;
+            font-family: monospace;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
@@ -245,6 +273,7 @@
     </style>
 </head>
 <body>
+    <!-- ::CLOUDFLARE_ERROR_500S_BOX:: -->
     <div class="container">
         <div class="language-switch">
             <select onchange="toggleLanguage(this.value)">
@@ -272,6 +301,7 @@
                     </ul>
                 </div>
 
+
                 <div class="troubleshooting">
                     <h3>建議解決方案：</h3>
                     <ul>
@@ -291,8 +321,6 @@
 
 IP 位址：::CLIENT_IP::
 辨識碼 (Ray ID)：::RAY_ID::
-
-::CLOUDFLARE_ERROR_500S_BOX::
 
 請描述您遇到的問題：</textarea>
                         <button class="copy-button" onclick="copyToClipboard()">複製資訊</button>
@@ -343,7 +371,6 @@ IP 位址：::CLIENT_IP::
                     </ul>
                 </div>
 
-
                 <div class="contact-info">
                     <h3>Need Help?</h3>
                     <p>Please send the following information to <a href="mailto:support@nafstore.net" class="email-link">support@nafstore.net</a>, and our support team will assist you:</p>
@@ -354,8 +381,6 @@ IP 位址：::CLIENT_IP::
 
 IP Address: ::CLIENT_IP::
 Ray ID: ::RAY_ID::
-
-::CLOUDFLARE_ERROR_500S_BOX::
 
 Please describe your issue:</textarea>
                         <button class="copy-button" onclick="copyToClipboard('en')">Copy Information</button>
@@ -374,6 +399,33 @@ Please describe your issue:</textarea>
         const currentYear = new Date().getFullYear();
         document.getElementById('current-year').textContent = currentYear;
         document.getElementById('current-year-en').textContent = currentYear;
+
+        // Extract and display Cloudflare error details
+        function extractCloudflareError() {
+            const originalError = document.querySelector('.cf-error-details.cf-error-522');
+            if (originalError) {
+                const zhErrorBox = document.querySelector('div:not([lang="en"]) .cf-error-details');
+                const enErrorBox = document.querySelector('[lang="en"] .cf-error-details');
+                
+                // Extract content
+                const title = originalError.querySelector('h1').textContent;
+                const description = originalError.querySelector('p').textContent;
+                const details = Array.from(originalError.querySelectorAll('ul li')).map(li => li.textContent);
+                
+                // Update both language versions
+                [zhErrorBox, enErrorBox].forEach(box => {
+                    if (box) {
+                        box.querySelector('h1').textContent = title;
+                        box.querySelector('p').textContent = description;
+                        const ul = box.querySelector('ul');
+                        ul.innerHTML = details.map(detail => `<li>${detail}</li>`).join('');
+                    }
+                });
+            }
+        }
+
+        // Run when page loads
+        window.addEventListener('load', extractCloudflareError);
 
         function toggleLanguage(lang) {
             const zhContent = document.querySelector('body > div:not([lang="en"])');
